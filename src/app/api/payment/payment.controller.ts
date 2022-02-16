@@ -26,6 +26,18 @@ export class SliderController {
     return products
   }
 
+
+  @Get('/client/:client')
+  async showPaymentForClient(req: Request, res: Response) {
+    const { client: clientId } = req.params
+
+    const payment = await this.payment.findOne({ client: clientId })
+
+    res.status(HttpStatus.OK)
+
+    return payment
+  }
+
   @Validate(showSchema)
   @Get('/:payment')
   async show(req: Request, res: Response) {

@@ -6,6 +6,7 @@ const amount = Joi.number()
 const date = Joi.date()
 const status = Joi.boolean()
 const client = Joi.string() 
+const product = Joi.string()
 const payment = Joi.extend(stringObjectExtension).string().trim()
  
 // paginate
@@ -47,7 +48,8 @@ export const createSchema = {
       amount: amount.allow('').optional(),
       date: date.optional(),
       status: status.optional(),
-      client: client.required()
+      client: client.required(),
+      product: product.required()
     })
     .required()
 }
@@ -63,7 +65,8 @@ export const updateSchema = {
       amount: amount.allow('').optional(),
       date: date.optional(),
       status: status.optional(),
-      client: client.optional()
+      client: client.optional(),
+      product: product.optional()
     })
     .required()
 }

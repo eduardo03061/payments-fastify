@@ -37,6 +37,11 @@ export class Payment extends BaseEntity {
   })
   public client!: string
 
+  @prop({
+    required: true
+  })
+  public product!: string
+
   @prop()
   public deletedAt?: Date
 }
