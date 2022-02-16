@@ -27,7 +27,7 @@ export class SliderController {
   }
 
   @Validate(showSchema)
-  @Get('/:client')
+  @Get('/:payment')
   async show(req: Request, res: Response) {
     const { payment: paymentId } = req.params
 
@@ -55,9 +55,9 @@ export class SliderController {
   }
 
   @Validate(updateSchema)
-  @Put('/:client')
+  @Put('/:payment')
   async update(req: Request, res: Response) {
-    const { client: id } = req.params
+    const { payment: id } = req.params
 
     const payment = await this.payment.findById(id)
 
@@ -68,7 +68,7 @@ export class SliderController {
     const updatedPayment = await this.payment.findByIdAndUpdate(payment.id, body, {
       fields: {
         id: 1,
-        email: 1
+        client: 1
       },
       new: true
     })
@@ -79,7 +79,7 @@ export class SliderController {
   }
 
   @Validate(deleteSchema)
-  @Delete('/:client')
+  @Delete('/:payment')
   async delete(req: Request, res: Response) {
     const { payment: paymentId } = req.params
 
@@ -92,7 +92,7 @@ export class SliderController {
       {
         fields: {
           id: 1,
-          email: 1
+          client: 1
         },
         new: true
       }

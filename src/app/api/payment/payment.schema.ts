@@ -63,7 +63,7 @@ export const updateSchema = {
       amount: amount.allow('').optional(),
       date: date.optional(),
       status: status.optional(),
-      client: client.required()
+      client: client.optional()
     })
     .required()
 }
